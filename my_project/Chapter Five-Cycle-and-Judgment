@@ -1,0 +1,130 @@
+# 循环与判断 true&false
+1>2    # False  1 不大于 2
+1<2<3    # True  链式比较，等价于 1<2 and 2<3
+42 != '42'  # True 整数和字符串类型不同，不相等
+'Name' == 'name'  # False  字符串区分大小写
+'M' in 'Magic'  # True  字符串包含子串
+number = 12
+number is 12  # True  小整数被缓存，是同一个对象
+# 验证比较运算符
+print(42 != '42')       # True
+print('Name' == 'name') # False
+print('M' in 'Magic')   # True
+
+number = 12
+number is 12    # True
+
+# 多条件比较
+middle=5
+1<middle<10
+# 变量的比较
+two=1+1
+three=1+3
+two<three
+# 字符串的比较
+'Eddie Van Helen' == 'eddie van helen' #
+#两个函数产生的结果进行比较
+abs(-10)>len('length of this word')
+
+# 不同类型的对象不能使用“<，>，<：，>："进行比较，却可以使用'：：'和'！：'，例如字符串和数字
+# 42 > 'the answer'  #无法比较
+42 == 'the answer' #False
+42 != 'the answer' #True
+# 要注意的是，浮点和整数虽是不同类型，但是不影响到比较运算：
+5.0 == 5 #True
+3.0 > 1 #True
+# 布尔类型
+True > False # 1>0 
+True + False > False + False # 1+0>0+0
+
+# 成员运算符与身份运算符(Membership&ldentifyOperators)
+# 成员运算符和身份运算符的关键词是in与iso把in放在两个对象中间的含义
+# 是，测试前者是否存在于in后面的集合中。说到集合，我们先在这里介绍一个简单易
+# 懂的集合类型一列表(List)
+# 字符串、浮点、整数、布尔类型、变量甚至是另一个列表都可以储存在列表中，
+# 列表是非常实用的数据结构，在后面会花更多篇幅来讲解列表的用法，这里先简单了解一下
+# 创建一个列表
+album = [] #空的列表
+album = ['Black Star','David Bowie',25,True] #非空列表
+# 想要添加一个内容,需要使用append方法向列表添加新的元素
+album.append('new song')
+# 下面是列表的索引,前面我们有学习字符串的索引,相信下面的知识也不难理解,
+print(album[0],album[-1]) #打印第一个元素,和最后一个元素.
+# 接下来使用in来测试字符串甘ackStar'是否在列表album中。如果存在则会显示True，不存在就会显示FaIse了：
+'Black Star' in album
+# 接下来讲解is和is not,接下来再来讲解is和isnot，它们是表示身份鉴别(ldentify Operator)的布尔运算符，in和not in则是表示归属关系的布尔运算符号(Membership Operator)
+# 在Python中任何一个对象都要满足身份(ldentity)丶类型(Type)丶值(value)这三个占缺一不可。is操作符号就是来进行身份的对比的。试试输入这段代码：
+the_Eddie = 'Eddie'
+name = 'Eddie'
+the_Eddie == name
+the_Eddie is name  # is对比最后返回了true
+
+# 其实在Python中任何对象都可判断其布尔值，除了0、None和所有空的序列与集合（列表，字典，集合）布尔值为FaIse之外，其它的都为True，使用函数bool()进行判别：
+bool(0) #False
+bool([]) #False
+bool('') #False
+bool(False) #False
+bool(None) #False
+a_thing = None # 当你想设定一个变量，但又没想好它应该等于什么值时，你就可以这样写
+
+# 布尔运算符(BooleanOperators)
+# and、or用于布尔值的之间的运算，具体规则如下：
+# not X 如果是True，则返回FaIse,否则返回True
+# X and Y   and表示“并且"，如果x和Y都是True,则返回True；如果x和Y有一个是FaIse,则返回FaIse
+# X or Y  or表示“或者"，如果x或y有其中一个是True，则返回True；如果x和Y都是FaIse,则返回FaIse
+
+# and和or经常用于处理复合条件，类似于1<n<3，也就是两个条件同时满足。
+1 < 3 and 2 < 5 #True
+1 < 3 and 2 > 5 #False
+1 < 3 or 2 > 5 #True
+1 > 3 or 2 > 5 #False
+
+# 条件控制 条件控制其实就是if...else的使用。先来看下条件控制的基本结构
+# 用一句话概括if...else结构的作用：如果···条件是成立的，就做····；反之，就做...
+# 所谓条件(condition)指的是成立的条件，即正返回值为True的布尔表达式,知道了这点后使用起来应该不难。
+# 我们结合函数的概念来创建这样一个函数，逐行分析它的原理：
+
+def account_login():  # 第1行：定义函数，并不需要参数；
+    password = input('Password:') # 第2行：使用input获得用户输入的字符串并储存在变量password中；
+    if password == 'bitter':  # 第3、4行：设置条件，如果用户输入的字符串和预设的密码12345相等时，
+        print('Login success!') # 就执行打印文本'Loginsuccess!'
+    else: # 第5、6行：反之，一切不等于预设密码的输入结果，全部会执行打印错误提示，
+        print('Wrong password contact bitter or invalid input!') # 并且再次调用函数，让用户再次输入密码；
+        account_login() # 第7行：运行函数。
+account_login() # 第8行：调用函数
+
+# 如果if后面的布尔表达式过长或者难于理解，可以采取给变量赋值的办法来储存布尔表达式返回的布尔值True或FaIseo因此上面的代码可以写成:
+def account_login():
+    password = input('Password:')
+    password_correct = password == 'bitter' #here!
+    if password_correct:
+        print('Login success!')
+    else:
+        print('Wrong password contact bitter or invalid input!')
+        account_login()
+account_login()
+
+# 多条件的判断,只需要在if和else之间加入elif,用法和if一样,所有的代码都是从上往下运行,
+# 首先需要看条件是否成立,如果成立那么就运行下面的代码,如果不成立就先运行下面的代码是否成立,如果都不成立就会运行else对应的语句.
+
+#下面使用elif语句做一个重置密码的功能:  下面的代码很简单,之前学了前面的内容,一眼就能理解下面的代码
+password_list = ['*#*#','bitter']
+def account_login():
+    password = input('Password:')
+    password_correct = password == password_list[-1]
+    password_reset = password == password_list[0]
+    if password_correct:
+        print('Login success!')
+    elif password_reset:
+        new_password = input('Enter a new password:')
+        password_list.append(new_password)
+        print('Your password has changed successfully!')
+        account_login()
+    else:
+        print('Wrong password contact bitter or invalid input!')
+        account_login()
+account_login()
+
+#循环(Loop) for 循环  下面做个例子
+for every_letter in 'Hello world':
+    print(every_letter)
